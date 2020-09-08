@@ -20,22 +20,11 @@ class ErrorDetail:
 
 
 @dataclass
-class Error:
-    error: ErrorDetail
-
-    @staticmethod
-    def from_dict(obj: Any) -> "Error":
-        assert isinstance(obj, dict)
-        error_detail = ErrorDetail.from_dict(obj.get("error"))
-        return Error(error_detail)
-
-
-@dataclass
 class ErrorResponse:
-    error: Error
+    error: ErrorDetail
 
     @staticmethod
     def from_dict(obj: Any) -> "ErrorResponse":
         assert isinstance(obj, dict)
-        error = Error.from_dict(obj.get("error"))
+        error = ErrorDetail.from_dict(obj.get("error"))
         return ErrorResponse(error)
