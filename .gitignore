@@ -12,6 +12,8 @@
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+.venv-ynab_sdk/
+prova.py
 
 # Generated files
 .idea/**/contentModel.xml
