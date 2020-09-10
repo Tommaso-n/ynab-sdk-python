@@ -13,9 +13,9 @@ class ErrorDetail:
     @staticmethod
     def from_dict(obj: Any) -> "ErrorDetail":
         assert isinstance(obj, dict)
-        error_id = parsers.from_str(obj.get("id"))
-        error_name = parsers.from_str(obj.get("name"))
-        error_detail = parsers.from_str(obj.get("detail"))
+        error_id: str = parsers.from_str(obj.get("id"))
+        error_name: str = parsers.from_str(obj.get("name"))
+        error_detail: str = parsers.from_str(obj.get("detail"))
         return ErrorDetail(error_id, error_name, error_detail)
 
 
@@ -26,5 +26,5 @@ class ErrorResponse:
     @staticmethod
     def from_dict(obj: Any) -> "ErrorResponse":
         assert isinstance(obj, dict)
-        error = ErrorDetail.from_dict(obj.get("error"))
+        error: ErrorDetail = ErrorDetail.from_dict(obj.get("error"))
         return ErrorResponse(error)
