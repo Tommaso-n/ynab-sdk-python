@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from datetime import datetime
-from typing import Any, List
+from typing import Any, List, Optional
 
 from ynab_sdk.utils import parsers
 
@@ -54,22 +54,22 @@ class DateFormat:
 class Budget:
     id: str
     name: str
-    last_modified_on: datetime
-    first_month: str
-    last_month: str
-    date_format: DateFormat
-    currency_format: CurrencyFormat
+    last_modified_on: Optional[datetime]
+    first_month: Optional[str]
+    last_month: Optional[str]
+    date_format: Optional[DateFormat]
+    currency_format: Optional[CurrencyFormat]
 
     @staticmethod
     def from_dict(obj: Any) -> "Budget":
         assert isinstance(obj, dict)
         budget_id = parsers.from_str(obj.get("id"))
         name = parsers.from_str(obj.get("name"))
-        last_modified_on = parsers.from_datetime(obj.get("last_modified_on"))
-        first_month = parsers.from_str(obj.get("first_month"))
-        last_month = parsers.from_str(obj.get("last_month"))
-        date_format = DateFormat.from_dict(obj.get("date_format"))
-        currency_format = CurrencyFormat.from_dict(obj.get("currency_format"))
+        last_modified_on = parsers.from_datetime(obj.get("last_modified_on"), True)
+        first_month = parsers.from_str(obj.get("first_month"), True)
+        last_month = parsers.from_str(obj.get("last_month"), True)
+        date_format = DateFormat.from_dict(obj.get("date_format"), True)
+        currency_format = CurrencyFormat.from_dict(obj.get("currency_format"), True)
         return Budget(
             budget_id,
             name,
