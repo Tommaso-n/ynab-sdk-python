@@ -12,10 +12,6 @@
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
-.venv-ynab_sdk/
-prova.py
-a.bat
-d.bat
 
 # Generated files
 .idea/**/contentModel.xml
